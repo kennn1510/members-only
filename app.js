@@ -1,16 +1,10 @@
-require("dotenv").config();
 const path = require("node:path");
-const { Pool } = require("pg");
 const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
-const { error } = require("node:console");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+const homeRouter = require("./routes/home");
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
@@ -20,7 +14,7 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => res.render("index"));
+app.get("/", homeRouter);
 app.get("/sign-up", (req, res) => res.render("sign-up"));
 app.post("/sign-up", async (req, res, next) => {
   try {
@@ -41,6 +35,18 @@ app.post("/sign-up", async (req, res, next) => {
     next(error);
   }
 });
+app.post(
+  "/log-in",
+  passport.authenticate("local", { successRedirect: "/", failureRedirect: "/" })
+);
+app.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
@@ -56,7 +62,7 @@ passport.use(
       if (!(await bcrypt.compare(password, user.password))) {
         return done(null, false, { message: "Incorrect password" });
       }
-      return done(null, user);
+      done(null, user);
     } catch (error) {
       done(error);
     }
@@ -64,7 +70,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
