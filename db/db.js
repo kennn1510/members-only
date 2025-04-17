@@ -12,4 +12,8 @@ async function getUser(userId) {
   return rows[0];
 }
 
-module.exports = { getUser };
+async function createUser(){
+  
+}
+
+module.exports = { getUser, createUser };

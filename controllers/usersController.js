@@ -1,5 +1,5 @@
 const db = require("../db/db");
-const { body, validationResult } = require("express-validator");
+// const { body, validationResult } = require("express-validator");
 
 function getHomePage(req, res) {
   res.render("index", { user: req.user });

@@ -1,11 +1,15 @@
+// Imports
 const path = require("node:path");
 const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
-const homeRouter = require("./routes/home");
+const homeRouter = require("./routes/homeRouter");
+const signUpRouter = require("./routes/signUpRouter");
+const loginRouter = require("./routes/loginRouter");
 
+// App Initialization
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -14,40 +18,12 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", homeRouter);
-app.get("/sign-up", (req, res) => res.render("sign-up"));
-app.post("/sign-up", async (req, res, next) => {
-  try {
-    if (req.body.password !== req.body.confirm_password)
-      res.status(404).send("Password does not match confirm password");
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await pool.query(
-      "INSERT INTO users (firstname, lastname, username, password) VALUES ($1, $2, $3, $4)",
-      [
-        req.body.first_name,
-        req.body.last_name,
-        req.body.username,
-        hashedPassword,
-      ]
-    );
-    res.redirect("/");
-  } catch (error) {
-    next(error);
-  }
-});
-app.post(
-  "/log-in",
-  passport.authenticate("local", { successRedirect: "/", failureRedirect: "/" })
-);
-app.get("/log-out", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+// Routes
+app.use("/", homeRouter);
+app.use("/sign-up", signUpRouter);
+app.use("/log-in", loginRouter);
 
+// Passport new LocalStrategy Function
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -69,10 +45,12 @@ passport.use(
   })
 );
 
+// Serialize User
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+// Deserialize User
 passport.deserializeUser(async (id, done) => {
   try {
     const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [
@@ -85,4 +63,5 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+// App server listen on port
 app.listen(3000, () => console.log("App server listening on port 3000"));
