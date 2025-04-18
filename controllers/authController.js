@@ -1,7 +1,6 @@
 const db = require("../db/db");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const usersController = require("./homeController");
 
 const login = (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {

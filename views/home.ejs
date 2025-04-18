@@ -7,6 +7,11 @@
   </head>
   <body>
     <h1>Hello World! Here is <%= user || "the home page" %>.</h1>
-    <%- include("log-in") %>
+    <% if (user) { %>
+    <p><a href="/logout">Log out</a></p>
+    <% } %> <% if (!user) { %>
+    <p><a href="/login">Login</a></p>
+    <% } %>
+    <p><a href="/signup">Sign-Up</a></p>
   </body>
 </html>
