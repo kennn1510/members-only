@@ -7,8 +7,7 @@ function getSignUpForm(req, res) {
 
 async function createUser(req, res) {
   try {
-    if (req.body.password !== req.body.confirm_password)
-      res.status(404).send("Password does not match confirmation password");
+    // Add express-validator later
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     await db.createUser(
       req.body.first_name,
