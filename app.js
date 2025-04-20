@@ -3,9 +3,8 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const db = require("./db/db");
-const LocalStrategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
-
 const homeRouter = require("./routes/home");
 const signUpRouter = require("./routes/signup");
 const authRouter = require("./routes/auth");
@@ -59,5 +58,10 @@ app.use("/signup", signUpRouter);
 app.use("/login", authRouter);
 app.use("/logout", authRouter);
 app.use("/", homeRouter);
+
+// app.use((err, req, res, next) => {
+//   console.error(err);
+//   res.status(500).send("Something went wrong!");
+// })
 
 app.listen(3000, () => console.log("App server listening on port 3000"));
