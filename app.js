@@ -21,18 +21,18 @@ app.use(
   })
 );
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const user = await db.getUserByUsername(username);
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        return done(null, false, {message: "Incorrect username"});
       }
       const passwordMatch = await bcrypt.compare(password, user.password);
       if (!passwordMatch) {
-        return done(null, false, { message: "Incorrect password" });
+        return done(null, false, {message: "Incorrect password"});
       }
       done(null, user);
     } catch (err) {

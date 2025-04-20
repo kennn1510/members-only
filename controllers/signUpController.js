@@ -21,4 +21,4 @@ async function createUser(req, res) {
   }
 }
 
-module.exports = { getSignUpForm, createUser };
+module.exports = {getSignUpForm, createUser};

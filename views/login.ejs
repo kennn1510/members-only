@@ -1,13 +1,13 @@
-<% if (locals.user) {%>
-<h1>WELCOME BACK <%= user.username %></h1>
-<a href="/logout">LOG OUT</a>
+<% if (locals.user) { %>
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/logout">LOG OUT</a>
 <% } else { %>
-<h1>please log in</h1>
-<form action="/login" method="post">
-  <label for="username">Username</label>
-  <input id="username" name="username" placeholder="username" type="text" required/>
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password" required/>
-  <button type="submit">Log In</button>
-</form>
-<%}%>
+    <h1>please log in</h1>
+    <form action="/login" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" placeholder="username" type="text" required/>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required/>
+        <button type="submit">Log In</button>
+    </form>
+<% } %>
