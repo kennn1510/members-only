@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="css/background.css">
+</head>
+<body>
 <h2>Sign up here:</h2>
 <%- include("./partials/errors.ejs") %>
 <form action="/signup" method="POST">
@@ -13,3 +24,5 @@
     <input type="password" id="confirm-password" name="confirm_password"/>
     <button type="submit">Submit</button>
 </form>
+</body>
+</html>

@@ -22,6 +22,7 @@ app.use(
 );
 app.use(passport.session());
 app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, "public")));
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
@@ -58,10 +59,5 @@ app.use("/signup", signUpRouter);
 app.use("/login", authRouter);
 app.use("/logout", authRouter);
 app.use("/", homeRouter);
-
-// app.use((err, req, res, next) => {
-//   console.error(err);
-//   res.status(500).send("Something went wrong!");
-// })
 
 app.listen(3000, () => console.log("App server listening on port 3000"));
