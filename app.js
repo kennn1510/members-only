@@ -18,10 +18,10 @@ app.use(
     secret: "cats",
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 app.use(passport.session());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 passport.use(
@@ -29,17 +29,17 @@ passport.use(
     try {
       const user = await db.getUserByUsername(username);
       if (!user) {
-        return done(null, false, {message: "Incorrect username"});
+        return done(null, false, { message: "Incorrect username" });
       }
       const passwordMatch = await bcrypt.compare(password, user.password);
       if (!passwordMatch) {
-        return done(null, false, {message: "Incorrect password"});
+        return done(null, false, { message: "Incorrect password" });
       }
       done(null, user);
     } catch (err) {
       done(err);
     }
-  })
+  }),
 );
 
 passport.serializeUser((user, done) => {
