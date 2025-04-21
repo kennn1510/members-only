@@ -4,9 +4,50 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
+    min-height: 100vh;
     font-family: 'Poppins', sans-serif;
     background-color: black;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.link-btn-like {
+    background-color: rgba(255, 81, 0, 0.65);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+}
+
+.img-logo {
+    border-radius: 50%;
+    width: 10vw;
+    height: auto;
+}

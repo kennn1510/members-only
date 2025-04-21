@@ -4,21 +4,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home Page</title>
-    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="/css/background.css">
 </head>
 <body>
-    <header>
-        <h1>Here is the home page.</h1>
-    </header>
-    <nav></nav>
+<%- include("./partials/nav.ejs") %>
     <main>
-        <% if (user) { %>
-            <h1>Here is <%= user.firstname + " " + user.lastname + ". Your username is " + user.username %>.</h1>
-            <p><a href="/logout">Log out</a></p>
-        <% } else { %>
-            <p><a href="/login">Login</a></p>
-            <p><a href="/signup">Sign-Up</a></p>
-        <% } %>
+        <!--messages should be here in main-->
+        <p>messages here...</p>
     </main>
     <footer></footer>
 </body>
