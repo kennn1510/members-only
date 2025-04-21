@@ -12,7 +12,9 @@
 <%- include("./partials/nav.ejs") %>
 
 <h2>Sign up here:</h2>
+<br>
 <%- include("./partials/errors.ejs") %>
+<br>
 <form action="/auth/signup" method="POST">
     <label for="first-name">First Name:</label>
     <input type="text" id="first-name" name="first_name" value="<%= typeof formData !== 'undefined' ? formData.firstName : '' %>"/>
