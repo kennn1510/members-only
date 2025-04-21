@@ -13,10 +13,10 @@
 
 <% if (locals.user) { %>
     <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/logout">LOG OUT</a>
+    <a href="/auth/logout">LOG OUT</a>
 <% } else { %>
     <h1>Please Log In</h1>
-    <form action="/login" method="post">
+    <form action="/auth/login" method="post">
         <label for="username">Username</label>
         <input id="username" name="username" placeholder="username" type="text" required/>
         <label for="password">Password</label>

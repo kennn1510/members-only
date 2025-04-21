@@ -9,4 +9,6 @@ WORK IN PROGRESS
 
 TODO:
 
+Make log out work properly. It is remembering the user for some reason after clicking home after logout.
+
 Enhance look and feel of website. Go through html and css to make it look pretty.

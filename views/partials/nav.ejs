@@ -3,10 +3,10 @@
     <div class="nav-links">
         <% if (locals.user) { %>
             <h1>Hi <%= user.firstname %>.</h1>
-            <a href="/logout">Log out</a>
+            <a href="/auth/logout">Log out</a>
         <% } else { %>
-            <a href="/login">Login</a>
-            <a href="/signup">Sign-Up</a>
+            <a href="/auth/login">Login</a>
+            <a href="/auth/signup">Sign-Up</a>
         <% } %>
     </div>
 </nav>

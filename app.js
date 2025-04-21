@@ -6,7 +6,6 @@ const db = require("./db/db");
 const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
 const homeRouter = require("./routes/home");
-const signUpRouter = require("./routes/signup");
 const authRouter = require("./routes/auth");
 
 const app = express();
@@ -55,9 +54,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-app.use("/signup", signUpRouter);
-app.use("/login", authRouter);
-app.use("/logout", authRouter);
+app.use("/auth", authRouter);
 app.use("/", homeRouter);
 
 app.listen(3000, () => console.log("App server listening on port 3000"));
