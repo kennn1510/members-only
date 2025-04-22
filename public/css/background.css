@@ -15,6 +15,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 nav {
@@ -57,4 +58,11 @@ a:hover {
     border-radius: 50%;
     width: 10vw;
     height: auto;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
