@@ -1,12 +1,14 @@
 <nav>
     <a href="/"><img src="/images/club.png" alt="power club logo" class="img-logo"></a>
+    <h1>Power Club Forum</h1>
     <div class="nav-links">
         <% if (locals.user) { %>
             <h1>Hi <%= user.firstname %>.</h1>
             <a href="/auth/logout">Log out</a>
+            <a href="/auth/update">Join the club</a>
         <% } else { %>
             <a href="/auth/login">Login</a>
-            <a href="/auth/signup">Sign-Up</a>
+            <a href="/auth/signup">Sign-up</a>
         <% } %>
     </div>
 </nav>

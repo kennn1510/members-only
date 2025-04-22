@@ -81,9 +81,21 @@ const createUser = [
   },
 ];
 
+function getMembershipForm(req, res) {
+  res.render("passcode", { user: req.user });
+}
+
+async function updateUserMembership(req, res) {
+  // I should validate and sanitize
+  await db.updateMembership(req.user.id);
+  res.redirect("/");
+}
+
 module.exports = {
   login,
   logout,
   getSignUpForm,
   createUser,
+  updateUserMembership,
+  getMembershipForm,
 };

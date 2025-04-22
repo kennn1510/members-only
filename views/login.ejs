@@ -9,12 +9,7 @@
     <link rel="stylesheet" href="/css/background.css">
 </head>
 <body>
-<%- include("./partials/nav.ejs") %>
-
-<% if (locals.user) { %>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/auth/logout">LOG OUT</a>
-<% } else { %>
+    <%- include("./partials/nav.ejs") %>
     <h1>Please Log In</h1>
     <form action="/auth/login" method="post">
         <label for="username">Username</label>
@@ -23,6 +18,5 @@
         <input id="password" name="password" type="password" required/>
         <button type="submit">Log In</button>
     </form>
-<% } %>
 </body>
 </html>

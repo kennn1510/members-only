@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Secret Membership</title>
+    <link rel="stylesheet" href="/css/background.css">
+</head>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <% if (locals.user) { %>
+    <h1>What is the secret passcode?</h1>
+    <form action="/auth/update" method="post">
+        <label for="membership-code">Membership Code:</label>
+        <input type="text" id="membership-code" name="membership-code">
+        <button type="submit">Submit Secret Passcode</button>
+    </form>
+    <% } %>
+</body>
+</html>
