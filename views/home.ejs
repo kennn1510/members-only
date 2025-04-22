@@ -7,11 +7,29 @@
     <link rel="stylesheet" href="/css/background.css">
 </head>
 <body>
-    <%- include("./partials/nav.ejs") %>
-    <main>
-        <!--messages should be here in main-->
-        <p>messages here...</p>
-    </main>
-    <%- include("./partials/footer.ejs") %>
+<%- include("./partials/nav.ejs") %>
+<main class="container">
+    <% if (locals.user) { %>
+        <a href="/message">Create New Message</a>
+    <% } %>
+    <div class="cards">
+        <div class="card">
+            <div class="card-header">The user's <%= typeof locals.msg !== "undefined" ? locals.msg.user : "name not here"%> should be here</div>
+            <div class="card-content">The user's message should be here</div>
+            <div class="card-footer">The user's message timestamp should be here</div>
+        </div>
+        <div class="card">
+            <div class="card-header">The user's name should be here</div>
+            <div class="card-content">The user's message should be here</div>
+            <div class="card-footer">The user's message timestamp should be here</div>
+        </div>
+        <div class="card">
+            <div class="card-header">The user's name should be here</div>
+            <div class="card-content">The user's message should be here</div>
+            <div class="card-footer">The user's message timestamp should be here</div>
+        </div>
+    </div>
+</main>
+<%- include("./partials/footer.ejs") %>
 </body>
 </html>

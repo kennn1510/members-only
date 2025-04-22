@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/background.css">
+</head>
+<body>
+<%- include("./partials/nav.ejs") %>
+<form action="/message" method="post">
+    <input type="hidden" name="userId" value="<%= locals.user %>">
+    <label for="newMessage">New Message</label>
+    <textarea name="newMessage" id="newMessage" cols="30" rows="10" >Type your new message here...</textarea>
+    <button type="submit">Submit</button>
+</form>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

@@ -17,7 +17,7 @@ const SQL = `
     (
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         message VARCHAR,
-        message_time TIME,
+        message_time TIMESTAMP DEFAULT NOW(),
         user_id INTEGER REFERENCES users(id));
 `;
 

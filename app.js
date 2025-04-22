@@ -7,6 +7,7 @@ const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
 const homeRouter = require("./routes/home");
 const authRouter = require("./routes/auth");
+const msgRouter = require("./routes/msg");
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
@@ -54,6 +55,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+app.use("/message", msgRouter);
 app.use("/auth", authRouter);
 app.use("/", homeRouter);
 

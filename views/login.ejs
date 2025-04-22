@@ -10,14 +10,17 @@
 </head>
 <body>
     <%- include("./partials/nav.ejs") %>
-    <h1>Please Log In</h1>
-    <form action="/auth/login" method="post">
-        <label for="username">Username</label>
-        <input id="username" name="username" placeholder="username" type="text" required/>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" required/>
-        <button type="submit">Log In</button>
-    </form>
+    <div>
+        <h2>Please Log In</h2>
+        <br>
+        <form action="/auth/login" method="post">
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="username" type="text" required/>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required/>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
     <%- include("./partials/footer.ejs") %>
 </body>
 </html>
