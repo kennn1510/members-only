@@ -11,13 +11,15 @@
 <body>
     <%- include("./partials/nav.ejs") %>
     <div>
-        <h2>Please Log In</h2>
+        <h2>Please Log In:</h2>
+        <br>
+        <%- include("./partials/errors.ejs") %>
         <br>
         <form action="/auth/login" method="post">
             <label for="username">Username</label>
-            <input id="username" name="username" placeholder="username" type="text" required/>
+            <input id="username" name="username" placeholder="username" type="text"/>
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" required/>
+            <input id="password" name="password" type="password"/>
             <button type="submit">Log In</button>
         </form>
     </div>

@@ -2,7 +2,10 @@ const { Router } = require("express");
 const router = Router();
 const authController = require("../controllers/authController");
 
-router.get("/login", (req, res) => res.render("login"));
+router.get("/login", (req, res) => {
+  res.render("login", { errors: req.session.messages });
+  req.session.messages = [];
+});
 router.post("/login", authController.login);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignUpForm);

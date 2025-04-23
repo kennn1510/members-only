@@ -6,7 +6,8 @@ const { body, validationResult } = require("express-validator");
 function login(req, res, next) {
   return passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
+    failureMessage: "Login failed!",
   })(req, res, next);
 }
 

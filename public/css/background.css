@@ -76,6 +76,10 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+
+li {
+    color: white;
+}
 footer {
     display: flex;
     flex-direction: row;
