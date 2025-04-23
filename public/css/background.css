@@ -24,6 +24,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    background-color: rgb(32, 32, 32);
+    box-shadow: 0 5px 5px 0 rgb(83, 83, 83);
 }
 
 .nav-links {
@@ -59,6 +61,8 @@ a:hover {
 .container {
     background-color: rgb(32, 32, 32);
     padding: 4vw;
+    border-radius: 1rem;
+
 }
 
 .cards{
