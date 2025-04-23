@@ -39,10 +39,35 @@ async function createNewMessage(message, userId) {
   ]);
 }
 
+async function getAllMessages() {
+  try {
+    const { rows } = await pool.query(`
+    SELECT
+      m.id AS message_id, -- Alias the message ID to avoid confusion
+      m.message,
+      m.message_time,
+      m.user_id,
+      u.firstname,
+      u.lastname
+    FROM
+      messages m
+    JOIN
+      users u ON m.user_id = u.id
+    ORDER BY
+      m.message_time DESC; -- Optional: Order messages by time, newest first
+      `);
+    return rows;
+  } catch (error) {
+    console.error("Error fetching all messages with user data:", error);
+    throw error;
+  }
+}
+
 module.exports = {
   getUserById,
   getUserByUsername,
   createUser,
   updateMembership,
   createNewMessage,
+  getAllMessages,
 };

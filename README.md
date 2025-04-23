@@ -9,6 +9,6 @@ WORK IN PROGRESS
 
 TODO:
 
-Enhance look and feel of website. Go through html and css to make it look pretty.
+Make messages read from database and display on home page.
 
-Add secret code and update membership status
+Enhance look and feel of website. Go through html and css to make it look pretty.
