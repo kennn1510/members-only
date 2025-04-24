@@ -13,9 +13,11 @@
     <%- include("./partials/nav.ejs") %>
     <% if (locals.user) { %>
     <h1>What is the secret passcode?</h1>
+    <%- include("./partials/errors.ejs") %>
     <form action="/auth/update" method="post">
+        <input type="hidden" name="user" value="<%= JSON.stringify(locals.user) %>">
         <label for="membership-code">Membership Code:</label>
-        <input type="text" id="membership-code" name="membership-code">
+        <input type="text" id="membership-code" name="membershipCode">
         <button type="submit">Submit Secret Passcode</button>
     </form>
     <% } %>

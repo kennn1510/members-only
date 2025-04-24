@@ -63,6 +63,15 @@ async function getAllMessages() {
   }
 }
 
+async function deleteMessageById(messageId) {
+  try {
+    await pool.query(`DELETE FROM messages WHERE id = $1`, [messageId]);
+  } catch (error) {
+    console.error("Error deleting message:", error);
+    throw error;
+  }
+}
+
 module.exports = {
   getUserById,
   getUserByUsername,
@@ -70,4 +79,5 @@ module.exports = {
   updateMembership,
   createNewMessage,
   getAllMessages,
+  deleteMessageById,
 };

@@ -25,6 +25,14 @@
                     %>
                     <%= formattedDate %>
                 </div>
+                <% if (locals.user?.membership) {%>
+                    <div class="card-delete">
+                        <form action="/" method="post">
+                            <input type="hidden" name="messageToBeDeleted" value="<%= JSON.stringify(msg.message_id)%>">
+                            <button type="submit">Delete this message</button>
+                        </form>
+                    </div>
+                <%}%>
             </div>
         <% } %>
     </div>

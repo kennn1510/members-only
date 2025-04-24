@@ -53,7 +53,7 @@ const validateSignUp = [
 
 const createUser = [
   validateSignUp,
-  async (req, res) => {
+  async (req, res, next) => {
     const { first_name, last_name, username } = req.body;
 
     const errors = validationResult(req);
@@ -86,11 +86,33 @@ function getMembershipForm(req, res) {
   res.render("passcode", { user: req.user });
 }
 
-async function updateUserMembership(req, res) {
-  // I should validate and sanitize
-  await db.updateMembership(req.user.id);
-  res.redirect("/");
-}
+const validatePasscode = [
+  body("membershipCode")
+    .trim()
+    .equals("Hello World!")
+    .withMessage("Sorry, wrong passcode! 😉 By the way, it is Hello World!"),
+];
+const updateUserMembership = [
+  validatePasscode,
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(403).render("passcode", {
+        errors: errors.array(),
+        user: req.user,
+      });
+    }
+
+    try {
+      if (req.body.membershipCode === "Hello World!") {
+        await db.updateMembership(req.user.id);
+      }
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  },
+];
 
 module.exports = {
   login,
