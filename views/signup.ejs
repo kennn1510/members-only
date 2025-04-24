@@ -13,11 +13,9 @@
   </head>
   <body>
     <%- include("./partials/nav.ejs") %>
-    <div>
+    <div class="container signup">
       <h2>Sign up here:</h2>
-      <br />
       <%- include("./partials/errors.ejs") %>
-      <br />
       <form action="/auth/signup" method="POST">
         <label for="first-name">First Name:</label>
         <input

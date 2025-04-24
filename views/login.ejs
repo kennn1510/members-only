@@ -13,17 +13,15 @@
   </head>
   <body>
     <%- include("./partials/nav.ejs") %>
-    <div>
+    <div class="container login">
       <h2>Please Log In:</h2>
-      <br />
       <%- include("./partials/errors.ejs") %>
-      <br />
       <form action="/auth/login" method="post">
         <label for="username">Email</label>
         <input
           id="username"
           name="username"
-          placeholder="username"
+          placeholder="test@email.com"
           type="text"
         />
         <label for="password">Password</label>
