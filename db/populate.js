@@ -2,6 +2,15 @@ require("dotenv").config();
 const { Client } = require("pg");
 const bcrypt = require("bcryptjs");
 
+const dbURL = process.argv[2];
+
+if (!dbUrl) {
+  console.error(
+    "Error: Please provide the database connection URL as an argument."
+  );
+  process.exit(1);
+}
+
 const SQL = `
     CREATE TABLE IF NOT EXISTS users
     (
@@ -23,7 +32,7 @@ const SQL = `
 
 async function seedDefaultUser() {
   const client = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: dbURL,
   });
   try {
     console.log("Seeding...");
@@ -32,7 +41,7 @@ async function seedDefaultUser() {
     const hashedPassword = await bcrypt.hash("password123", 10);
     await client.query(
       "INSERT INTO users (firstname, lastname, username, password) VALUES ($1, $2, $3, $4)",
-      ["Mario", "Luigi", "some@email.com", hashedPassword],
+      ["Mario", "Luigi", "some@email.com", hashedPassword]
     );
     console.log("Seeding Done.");
   } catch (err) {
