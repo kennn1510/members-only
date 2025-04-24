@@ -1,92 +1,91 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgb(32, 32, 32);
-    box-shadow: 0 5px 5px 0 rgb(83, 83, 83);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(32, 32, 32);
+  box-shadow: 0 5px 5px 0 rgb(83, 83, 83);
 }
 
 .nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 a {
-    display: inline-block;
-    color: white;
-    text-decoration: none;
-    background-color: rgba(255, 0, 0, 0.43);
-    padding: 0.4rem 1rem;
-    border: 1px solid mintcream;
-    border-radius: 1rem;
-    opacity: 1;
-    transition: 0.5s;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(255, 0, 0, 0.43);
+  padding: 0.4rem 1rem;
+  border: 1px solid mintcream;
+  border-radius: 1rem;
+  opacity: 1;
+  transition: 0.5s;
 }
 
 a:hover {
-    color: blue;
-    border-color: blue;
-    opacity: .8;
+  color: blue;
+  border-color: blue;
+  opacity: 0.8;
 }
 
 .img-logo {
-    border-radius: 50%;
-    width: 5vw;
-    height: auto;
+  border-radius: 50%;
+  width: 5vw;
+  height: auto;
 }
 
 .container {
-    background-color: rgb(32, 32, 32);
-    padding: 4vw;
-    border-radius: 1rem;
-
+  background-color: rgb(32, 32, 32);
+  padding: 4vw;
+  border-radius: 1rem;
 }
 
-.cards{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4vw;
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
 }
 
 .card {
-    background-color: rgba(255, 0, 0, 0.43);
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
+  background-color: rgba(255, 0, 0, 0.43);
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 li {
-    color: white;
+  color: white;
 }
 footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
