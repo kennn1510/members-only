@@ -1,15 +1,7 @@
 require("dotenv").config();
 const { Client } = require("pg");
-const bcrypt = require("bcryptjs");
 
 const dbURL = process.argv[2];
-
-if (!dbUrl) {
-  console.error(
-    "Error: Please provide the database connection URL as an argument."
-  );
-  process.exit(1);
-}
 
 const SQL = `
     CREATE TABLE IF NOT EXISTS users
@@ -35,20 +27,29 @@ async function seedDefaultUser() {
     connectionString: dbURL,
   });
   try {
-    console.log("Seeding...");
+    console.log("Attempting to connect with:", dbURL);
     await client.connect();
-    await client.query(SQL);
-    const hashedPassword = await bcrypt.hash("password123", 10);
-    await client.query(
-      "INSERT INTO users (firstname, lastname, username, password) VALUES ($1, $2, $3, $4)",
-      ["Mario", "Luigi", "some@email.com", hashedPassword]
-    );
-    console.log("Seeding Done.");
+    console.log("Successfully connected!");
   } catch (err) {
-    console.error(err);
+    console.error("Connection error:", err);
   } finally {
     await client.end();
   }
+  // try {
+  //   console.log("Seeding...");
+  //   await client.connect();
+  //   await client.query(SQL);
+  //   const hashedPassword = await bcrypt.hash("password123", 10);
+  //   await client.query(
+  //     "INSERT INTO users (firstname, lastname, username, password) VALUES ($1, $2, $3, $4)",
+  //     ["Mario", "Luigi", "some@email.com", hashedPassword]
+  //   );
+  //   console.log("Seeding Done.");
+  // } catch (err) {
+  //   console.error(err);
+  // } finally {
+  //   await client.end();
+  // }
 }
 
 seedDefaultUser();
