@@ -18,7 +18,7 @@ app.use(
     secret: "cats",
     resave: false,
     saveUninitialized: false,
-  }),
+  })
 );
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
@@ -39,7 +39,7 @@ passport.use(
     } catch (err) {
       done(err);
     }
-  }),
+  })
 );
 
 passport.serializeUser((user, done) => {
@@ -59,4 +59,8 @@ app.use("/message", msgRouter);
 app.use("/auth", authRouter);
 app.use("/", homeRouter);
 
-app.listen(3000, () => console.log("App server listening on port 3000"));
+const port = process.env.PORT || 3000;
+
+app.listen(port, "::", () => {
+  console.log(`Server listening on [::]${port}`);
+});

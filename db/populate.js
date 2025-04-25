@@ -23,6 +23,7 @@ const SQL = `
 `;
 
 async function seedDefaultUser() {
+  console.log("method started!");
   const client = new Client({
     connectionString: dbURL,
   });
