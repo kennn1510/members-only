@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "populate-db": "node db/populate.js $DATABASE_URL",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
